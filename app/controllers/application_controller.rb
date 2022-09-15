@@ -25,9 +25,9 @@ class ApplicationController < Sinatra::Base
 
   post '/baked_goods' do
     baked_good = BakedGood.create(
-      "name": params[:name],
-      "price": params[:price],
-      "bakery_id": params{:bakery_id}
+      name: params[:name],
+      price: params[:price],
+      bakery_id: params[:bakery_id]
     )
     baked_good.to_json
   end
@@ -38,9 +38,10 @@ class ApplicationController < Sinatra::Base
     bakery.to_json
   end
 
-  delete 'baked_goods/id' do
+  delete '/baked_goods/:id' do
     baked_good = BakedGood.find(params[:id])
     baked_good.destroy
     baked_good.to_json
   end
+
 end
